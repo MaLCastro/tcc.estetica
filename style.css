@@ -5602,3 +5602,314 @@ body {
         width: 100%;
     }
 }
+/* ============================================================
+   ESTILOS DA PÁGINA AGENDA
+   ============================================================ */
+   .pagina-agenda {
+    min-height: 100vh;
+    width: 100%;
+}
+
+.agenda-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    width: 100%;
+}
+
+.agenda-cabecalho {
+    margin-bottom: 30px;
+}
+
+.agenda-mensagem {
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
+.agenda-mensagem.erro {
+    background: #f8d7da;
+}
+
+.agenda-resumo {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+}
+
+.agenda-legenda {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+    padding: 15px;
+    background: #fff;
+    border-radius: 12px;
+}
+
+.legenda-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.legenda-cor {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.cor-disponivel {
+    background: #f8d7da;
+}
+
+.cor-agendado {
+    background: #dc3545;
+}
+
+.cor-nao-liberado {
+    background: #ced4da;
+}
+
+.cor-passado {
+    background: #e9ecef;
+}
+
+.agenda-grade {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 12px;
+    width: 100%;
+}
+
+@media (max-width: 1200px) {
+    .agenda-grade {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+}
+
+.agenda-dia {
+    background: #fff;
+    border-radius: 12px;
+    padding: 15px;
+    min-height: 200px;
+}
+
+.dia-cabecalho {
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 12px;
+}
+
+.dia-nome {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.dia-data {
+    color: #666;
+    font-size: 0.9em;
+}
+
+.dia-horarios {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.horario-btn {
+    padding: 10px 8px;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 0.9em;
+    text-decoration: none;
+    display: block;
+    border: none;
+    cursor: default;
+}
+
+.horario-btn.disponivel {
+    background: #f8d7da;
+    color: #5c2b36;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.horario-btn.disponivel:hover {
+    background: #f1c4c8;
+}
+
+.horario-btn.agendado {
+    background: #dc3545;
+    color: #fff;
+}
+
+.horario-btn.nao-liberado {
+    background: #ced4da;
+    color: #495057;
+}
+
+.horario-btn.indisponivel-passado {
+    background: #e9ecef;
+    color: #999;
+}
+
+.horario-sem-horarios {
+    color: #999;
+    font-size: 0.85em;
+    text-align: center;
+    padding: 10px 5px;
+}
+
+.botao-voltar {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #5c2b36;
+    color: #fff;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.botao-voltar:hover {
+    opacity: 0.9;
+}
+
+/* ============================================================
+   ESTILOS DA LIBERAÇÃO CLICÁVEL
+   ============================================================ */
+   .navegacao-meses-liberar {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.btn-navega {
+    padding: 6px 12px;
+    background: #f3e4e8;
+    color: #5c2b36;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.calendario-liberar-cabecalho {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    margin-bottom: 8px;
+}
+
+.dia-semana-cab {
+    text-align: center;
+    font-weight: bold;
+    color: #5c2b36;
+    padding: 8px;
+    font-size: 0.9em;
+}
+
+.calendario-liberar-grade {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+}
+
+.celula-lib {
+    min-height: 60px;
+    background: #fff;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid transparent;
+    transition: all 0.2s;
+}
+
+.celula-lib.fora-mes {
+    background: transparent;
+    border: none;
+}
+
+.celula-lib.passado {
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+.celula-lib.selecionado {
+    background: #d4edda;
+    border-color: #28a745;
+}
+
+.celula-lib:hover:not(.fora-mes):not(.passado) {
+    border-color: #f8d7da;
+    background: #fef2f4;
+}
+
+.celula-lib-label {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 8px 4px;
+}
+
+.celula-lib-label input {
+    margin-bottom: 4px;
+    cursor: pointer;
+}
+
+.numero-lib {
+    font-size: 0.95em;
+}
+
+.botoes-lib-acao {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.etiqueta-liberado {
+    display: inline-block;
+    background: #d4edda;
+    color: #155724;
+    font-size: 0.7em;
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin-top: 4px;
+}
+
+.dia-liberado {
+    border-left: 3px solid #28a745;
+}
+
+/* Botões de ação do mês inteiro */
+.acao-mes-inteiro {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+}
+
+.btn-secundario {
+    background: #e9ecef;
+    color: #495057;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.btn-secundario:hover {
+    background: #dee2e6;
+}
